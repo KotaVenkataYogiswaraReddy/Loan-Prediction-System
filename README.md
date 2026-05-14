@@ -10,10 +10,6 @@ This is a Loan Prediction System project which aims to predict whether a loan ap
 - [Dataset](#dataset)
 - [Model_Evaluation](#model_evaluation)
 - [Usage](#usage)
-- [Contributing](#contributing)
-- [License](#license)
-- [Contact](#contact)
-
 ## Technologies Used
 - Python
 - Flask (Python web framework)
@@ -60,16 +56,4 @@ The performance of the trained model is evaluated using several metrics such as 
    - Fill in the loan application details and click on the "Submit" button.
    - The prediction result will be displayed on the screen.
 
-## Contributing
 
-Contributions are welcome! If you have any suggestions, bug reports, or feature requests, please open an issue on the [GitHub repository](https://github.com/anjali9156/Loan_Prediction_System).
-
-## License
-
-This project is licensed under the [MIT License](LICENSE).
-
-## Contact
-For any inquiries or suggestions, please feel free to reach out to the project owner [Anjali](https://github.com/anjali9156).
-=======
-# Loan-Prediction
->>>>>>> 21814fd48ed480c91c81f20606691c23bb65a899
