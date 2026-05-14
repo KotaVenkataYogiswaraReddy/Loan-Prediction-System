@@ -1,3 +1,4 @@
+#Change the train.csv path according to your location
 import streamlit as st
 import pandas as pd
 import numpy as np
@@ -18,14 +19,36 @@ def load_data():
     return df
 
 def train_model(df):
-    df = df.drop(columns=["Loan_ID"])
-    cols = ["Gender", "Married", "Education", "Self_Employed", "Property_Area", "Loan_Status", "Dependents"]
-    for col in cols:
-        df[col] = LabelEncoder().fit_transform(df[col])
-    X = df.drop(columns="Loan_Status")
+
+    # Remove unnecessary ID column
+    df = df.drop("Loan_ID", axis=1)
+
+    # Fill missing categorical values
+    cat_cols = df.select_dtypes(include='object').columns
+
+    for col in cat_cols:
+        df[col] = df[col].fillna(df[col].mode()[0])
+
+    # Fill missing numerical values
+    num_cols = df.select_dtypes(include=['int64', 'float64']).columns
+
+    for col in num_cols:
+        df[col] = df[col].fillna(df[col].mean())
+
+    # Encode categorical columns
+    le = LabelEncoder()
+
+    for col in cat_cols:
+        df[col] = le.fit_transform(df[col])
+
+    # Features and target
+    X = df.drop("Loan_Status", axis=1)
     y = df["Loan_Status"]
-    model = LogisticRegression()
+
+    model = LogisticRegression(max_iter=1000)
+
     model.fit(X, y)
+
     return model
 
 df = load_data()
